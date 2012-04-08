@@ -529,7 +529,7 @@
 - (XVimEvaluator*)TILDE:(id)arg{
     NSTextView* view = [self textView];
 	NSRange replacementRange = [view selectedRange];
-	replacementRange.length = [self numericArg];
+	replacementRange.length = ([self numericMode]) ? [self numericArg] : 1;
 	[view clampRangeToEndOfLine:&replacementRange];
 	[view toggleCaseForRange:replacementRange];
 	return nil;
